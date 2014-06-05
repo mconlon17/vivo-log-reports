@@ -3,74 +3,89 @@
     log-reports.py -- report on VIVO log files
 
     Verison 1.0 M. Conlon 2012-05-10
-
     --  read log fle for 1 (default) or many days and tabulates editor,
         subjects, predicates, objects, actions
+    1.1 MC 2014-06-05
+    --  Update for reading vivo.all.log.1.  Works as expected for single file
 
-    Requested features
-
-    --  Improve resiliency to minor variations in the time stamp in the
-        name of the log file.
-    --  Use global variable for location of log files
+    To Do
+    --  Handle multi-file
 """
 
-__author__      = "Michael Conlon"
-__copyright__   = "Copyright 2013, University of Florida"
-__license__     = "BSD 3-Clause license"
+__author__ = "Michael Conlon"
+__copyright__ = "Copyright 2014, University of Florida"
+__license__ = "BSD 3-Clause license"
+__version__ = "1.1"
 
+from datetime import datetime
 
-import urllib2, datetime
-import csv
-
-def log_url(d):
-    url="http://vivo.ufl.edu/logs/vivo-triple-log-"+d.isoformat()+"T04:00:01.log"
-    return url
- 
-def get_log(d):
-    url = log_url(d)
-    req = urllib2.Request(url)
-    response = urllib2.urlopen(req)
-    reader = csv.reader(response)
-    log = ["date","thing","user","as","subject","predicate","object"]
-    for row in reader:
-        log.append(row)
-    return log[7:]
-
-def counts(s,log,trim=100000000):
-    names = ["Date","Process","User","ADD/SUB","Subject","Predicate","Object"]
-    ix = names.index(s)
-    print "Counts of "+s
+def counts(s,log,trim=None):
+    trim_text = ""
+    if trim is not None:
+        trim_text = ' (trimmed at '+str(trim)+')'
+    print "\nCounts of "+s+trim_text
     things = {}
     for row in log:
         try:
-            thing = row[ix]
+            thing = row[s]
             things[thing] = things.get(thing,0) + 1
         except:
             continue
     i=0    
     for thing in sorted(things, key =things.get, reverse=True):
         i = i + 1
-        if i > trim:
+        if trim is not None and i > trim:
             break
-        print thing,things[thing]
+        print things[thing],'\t',thing
 
-# Get a log from a particular date
-d = datetime.date(2012,12,07)
-log = get_log(d)
+# Start here
 
-# get the logs from the previous 6 days to make a week
+print datetime.now(),"Start"
 
-for i in range(1):
-    d = d - datetime.timedelta(days=1)
-    log = log+get_log(d)
+log_file = open("vivo.all.log.1","r")
+n = 0
+log = []
+for row in log_file:
+    if len(row) < 127:
+        continue
+    words = row.split(' ')
+    if len(words) < 10:
+        continue
+    io = words[9][:-1]
+    user = words[8][:-1]
+    process = words[7][:-1]
+    date = words[5]
+    triple_string = ' '.join(words[10:])
+    triple_string = triple_string.replace('","',"|")
+    try:
+        [subject,predicate,object] = triple_string.split("|")
+        object = object.replace('""', '"')
+        object = object.replace('>"', '>')
+        object = object.replace('\n', '')
+        if subject[0] == '"':
+            subject = subject[1:]
+    except:
+        continue
+    if io != "ADD" and io != "SUB":
+        continue
+    n = n + 1
+    log.append({
+        "User" : user,
+        "Process" : process,
+        "ADD/SUB" : io,
+        "Date" : date,
+        "Subject" : subject,
+        "Predicate": predicate,
+        "Object": object
+        })
 
-print "I got the logs.  They have ",len(log)," entries"
+print n,"log lines read"
 
-counts("User",log)
+counts("Date",log)
 counts("Process",log)
 counts("ADD/SUB",log)
-counts("Date",log)
+counts("User",log)
 counts("Subject",log,trim=25)
 counts("Predicate",log,trim=25)
 counts("Object",log,trim=25)
-
+print datetime.now(),"Finish"
