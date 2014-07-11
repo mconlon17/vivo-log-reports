@@ -18,6 +18,7 @@ __license__ = "BSD 3-Clause license"
 __version__ = "1.1"
 
 from datetime import datetime
+from urllib2 import urlopen
 
 def counts(s,log,trim=None):
     trim_text = ""
@@ -42,7 +43,8 @@ def counts(s,log,trim=None):
 
 print datetime.now(),"Start"
 
-log_file = open("vivo.all.log.1","r")
+response = urlopen('http://vivo.ufl.edu/logs/vivo-triple-log-2014-07-09.log')
+log_file = response.read().split('\n')
 n = 0
 log = []
 for row in log_file:
