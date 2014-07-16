@@ -18,6 +18,7 @@ __license__ = "BSD 3-Clause license"
 __version__ = "1.1"
 
 from datetime import datetime
+from datetime import timedelta
 from urllib2 import urlopen
 
 def counts(s,log,trim=None):
@@ -39,15 +40,39 @@ def counts(s,log,trim=None):
             break
         print things[thing],'\t',thing
 
+def get_logs(from_date, to_date):
+    """
+    Given a from and to date, gather and return the logs
+    """
+    base_uri = 'http://vivo.ufl.edu/logs/vivo-triple-log-'
+    tail_uri = '.log'
+    date_fmt = '%Y-%m-%d'
+    log_recs = []
+    date = from_date
+    while date <= to_date:
+        date_str = date.strftime(date_fmt)
+        uri = base_uri + date_str + tail_uri
+        print "Reading", date_str, "from", uri
+        try:
+            response = urlopen(uri)
+            log_file = response.read().split('\n')
+            log_recs = log_recs + log_file
+        except:
+            pass
+        date = date + day
+    return log_recs
+
 # Start here
 
 print datetime.now(),"Start"
 
-response = urlopen('http://vivo.ufl.edu/logs/vivo-triple-log-2014-07-09.log')
-log_file = response.read().split('\n')
+day = timedelta(days=1)
+to_date = datetime.now() - day
+from_date = datetime.now() - 30*day
+log_recs = get_logs(from_date, to_date)
 n = 0
 log = []
-for row in log_file:
+for row in log_recs:
     if len(row) < 127:
         continue
     words = row.split(' ')
@@ -87,7 +112,7 @@ counts("Date",log)
 counts("Process",log)
 counts("ADD/SUB",log)
 counts("User",log)
-counts("Subject",log,trim=25)
-counts("Predicate",log,trim=25)
-counts("Object",log,trim=25)
+counts("Subject",log,trim=50)
+counts("Predicate",log,trim=50)
+counts("Object",log,trim=50)
 print datetime.now(),"Finish"
