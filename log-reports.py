@@ -2,24 +2,25 @@
 """
     log-reports.py -- report on VIVO log files
 
-    Verison 1.0 M. Conlon 2012-05-10
+    Version 1.0 M. Conlon 2012-05-10
     --  read log fle for 1 (default) or many days and tabulates editor,
         subjects, predicates, objects, actions
     1.1 MC 2014-06-05
     --  Update for reading vivo.all.log.1.  Works as expected for single file
-
-    To Do
-    --  Handle multi-file
+    1.2 MC 2014-08-11
+    --  Now reads web files.  Command line arguments control number of days to
+        read and the trim level
 """
 
 __author__ = "Michael Conlon"
 __copyright__ = "Copyright 2014, University of Florida"
 __license__ = "BSD 3-Clause license"
-__version__ = "1.1"
+__version__ = "1.2"
 
 from datetime import datetime
 from datetime import timedelta
 from urllib2 import urlopen
+import argparse
 
 def counts(s,log,trim=None):
     trim_text = ""
@@ -64,11 +65,19 @@ def get_logs(from_date, to_date):
 
 # Start here
 
+parser = argparse.ArgumentParser()
+parser.add_argument("days", help="number of days of logs to include",
+                    type=int, default=30)
+parser.add_argument("trim", help="number of lines to show in tables",
+                    type=int, default=100)
+args = parser.parse_args()
+
+
 print datetime.now(),"Start"
 
 day = timedelta(days=1)
 to_date = datetime.now() - day
-from_date = datetime.now() - 30*day
+from_date = datetime.now() - args.days * day
 log_recs = get_logs(from_date, to_date)
 n = 0
 log = []
@@ -112,7 +121,7 @@ counts("Date",log)
 counts("Process",log)
 counts("ADD/SUB",log)
 counts("User",log)
-counts("Subject",log,trim=50)
-counts("Predicate",log,trim=50)
-counts("Object",log,trim=50)
+counts("Subject",log,trim=args.trim)
+counts("Predicate",log,trim=args.trim)
+counts("Object",log,trim=args.trim)
 print datetime.now(),"Finish"
