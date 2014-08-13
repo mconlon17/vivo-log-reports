@@ -10,12 +10,15 @@
     1.2 MC 2014-08-11
     --  Now reads web files.  Command line arguments control number of days to
         read and the trim level
+    1.3 MC 2014-08-13
+    --  Fixed bug reading wrong date in he log.  Date is now correct for
+        transactions
 """
 
 __author__ = "Michael Conlon"
 __copyright__ = "Copyright 2014, University of Florida"
 __license__ = "BSD 3-Clause license"
-__version__ = "1.2"
+__version__ = "1.3"
 
 from datetime import datetime
 from datetime import timedelta
@@ -90,7 +93,7 @@ for row in log_recs:
     io = words[9][:-1]
     user = words[8][:-1]
     process = words[7][:-1]
-    date = words[5]
+    date = words[0]
     triple_string = ' '.join(words[10:])
     triple_string = triple_string.replace('","',"|")
     try:
