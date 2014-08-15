@@ -11,7 +11,7 @@
     --  Now reads web files.  Command line arguments control number of days to
         read and the trim level
     1.3 MC 2014-08-13
-    --  Fixed bug reading wrong date in he log.  Date is now correct for
+    --  Fixed bug reading wrong date in the log.  Date is now correct for
         transactions
 """
 
