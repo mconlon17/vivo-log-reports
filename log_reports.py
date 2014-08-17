@@ -25,58 +25,67 @@ from datetime import timedelta
 from urllib2 import urlopen
 import argparse
 
-def counts(s,log,trim=None):
+
+def counts(s, log_data, trim=None):
+    """
+    Given a keyword s, and log data, generate a frequency table for s from the
+    log data
+    :param s: name of key
+    :param log_data: log data
+    :param trim: number of lines to show in frequency tables
+    """
     trim_text = ""
     if trim is not None:
-        trim_text = ' (trimmed at '+str(trim)+')'
-    print "\nCounts of "+s+trim_text
+        trim_text = ' (trimmed at ' + str(trim) + ')'
+    print "\nCounts of " + s + trim_text
     things = {}
-    for row in log:
+    for row in log_data:
         try:
             thing = row[s]
-            things[thing] = things.get(thing,0) + 1
-        except:
+            things[thing] = things.get(thing, 0) + 1
+        except KeyError:
             continue
-    i=0    
-    for thing in sorted(things, key =things.get, reverse=True):
+    i = 0
+    for thing in sorted(things, key=things.get, reverse=True):
         i = i + 1
         if trim is not None and i > trim:
             break
-        print things[thing],'\t',thing
+        print things[thing], '\t', thing
 
-def get_logs(from_date, to_date):
+
+def get_logs(start_date, end_date):
     """
-    Given a from and to date, gather and return the logs
+    Given a start and end date, gather and return log_records, a list of the log
+    records
     """
     base_uri = 'http://vivo.ufl.edu/logs/vivo-triple-log-'
     tail_uri = '.log'
     date_fmt = '%Y-%m-%d'
-    log_recs = []
-    date = from_date
-    while date <= to_date:
-        date_str = date.strftime(date_fmt)
+    log_records = []
+    log_date = start_date
+    while log_date <= end_date:
+        date_str = log_date.strftime(date_fmt)
         uri = base_uri + date_str + tail_uri
         print "Reading", date_str, "from", uri
         try:
             response = urlopen(uri)
             log_file = response.read().split('\n')
-            log_recs = log_recs + log_file
-        except:
+            log_records = log_records + log_file
+        except IOError:
             pass
-        date = date + day
-    return log_recs
+        log_date = log_date + day
+    return log_records
 
 # Start here
 
 parser = argparse.ArgumentParser()
 parser.add_argument("days", help="number of days of logs to include",
-                    type=int, default=30)
+                    type=int, default=7)
 parser.add_argument("trim", help="number of lines to show in tables",
                     type=int, default=100)
 args = parser.parse_args()
 
-
-print datetime.now(),"Start"
+print datetime.now(), "Start"
 
 day = timedelta(days=1)
 to_date = datetime.now() - day
@@ -84,10 +93,10 @@ from_date = datetime.now() - args.days * day
 log_recs = get_logs(from_date, to_date)
 n = 0
 log = []
-for row in log_recs:
-    if len(row) < 127:
+for log_row in log_recs:
+    if len(log_row) < 127:
         continue
-    words = row.split(' ')
+    words = log_row.split(' ')
     if len(words) < 10:
         continue
     io = words[9][:-1]
@@ -95,36 +104,37 @@ for row in log_recs:
     process = words[7][:-1]
     date = words[0]
     triple_string = ' '.join(words[10:])
-    triple_string = triple_string.replace('","',"|")
+    triple_string = triple_string.replace('","', "|")
     try:
-        [subject,predicate,object] = triple_string.split("|")
-        object = object.replace('""', '"')
-        object = object.replace('>"', '>')
-        object = object.replace('\n', '')
-        if subject[0] == '"':
-            subject = subject[1:]
-    except:
+        [triple_subject, triple_predicate, triple_object] = \
+            triple_string.split("|")
+        triple_object = triple_object.replace('""', '"')
+        triple_object = triple_object.replace('>"', '>')
+        triple_object = triple_object.replace('\n', '')
+        if triple_subject[0] == '"':
+            triple_subject = triple_subject[1:]
+    except IndexError:
         continue
     if io != "ADD" and io != "SUB":
         continue
     n = n + 1
     log.append({
-        "User" : user,
-        "Process" : process,
-        "ADD/SUB" : io,
-        "Date" : date,
-        "Subject" : subject,
-        "Predicate": predicate,
-        "Object": object
-        })
+        "User": user,
+        "Process": process,
+        "ADD/SUB": io,
+        "Date": date,
+        "Subject": triple_subject,
+        "Predicate": triple_predicate,
+        "Object": triple_object
+    })
 
-print n,"log lines read"
+print n, "log lines read"
 
-counts("Date",log)
-counts("Process",log)
-counts("ADD/SUB",log)
-counts("User",log)
-counts("Subject",log,trim=args.trim)
-counts("Predicate",log,trim=args.trim)
-counts("Object",log,trim=args.trim)
-print datetime.now(),"Finish"
+counts("Date", log)
+counts("Process", log)
+counts("ADD/SUB", log)
+counts("User", log)
+counts("Subject", log, trim=args.trim)
+counts("Predicate", log, trim=args.trim)
+counts("Object", log, trim=args.trim)
+print datetime.now(), "Finish"
