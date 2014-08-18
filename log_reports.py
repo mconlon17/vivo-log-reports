@@ -113,7 +113,7 @@ for log_row in log_recs:
         triple_object = triple_object.replace('\n', '')
         if triple_subject[0] == '"':
             triple_subject = triple_subject[1:]
-    except IndexError:
+    except:
         continue
     if io != "ADD" and io != "SUB":
         continue
