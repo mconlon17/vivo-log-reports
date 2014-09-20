@@ -1,115 +1,115 @@
-2014-09-19 16:10:06.170946 Start
-Reading 2014-09-12 from http://vivo.ufl.edu/logs/vivo-triple-log-2014-09-12.log
+2014-09-20 10:05:15.987480 Start
 Reading 2014-09-13 from http://vivo.ufl.edu/logs/vivo-triple-log-2014-09-13.log
 Reading 2014-09-14 from http://vivo.ufl.edu/logs/vivo-triple-log-2014-09-14.log
 Reading 2014-09-15 from http://vivo.ufl.edu/logs/vivo-triple-log-2014-09-15.log
 Reading 2014-09-16 from http://vivo.ufl.edu/logs/vivo-triple-log-2014-09-16.log
 Reading 2014-09-17 from http://vivo.ufl.edu/logs/vivo-triple-log-2014-09-17.log
-160645 log lines read
+Reading 2014-09-18 from http://vivo.ufl.edu/logs/vivo-triple-log-2014-09-18.log
+31863 log lines read
 
 Counts of Date
-138702 	2014-09-12
-13266 	2014-09-15
-7524 	2014-09-14
-584 	2014-09-16
-452 	2014-09-17
-117 	2014-09-13
+19899 	2014-09-15
+10032 	2014-09-14
+876 	2014-09-16
+678 	2014-09-17
+222 	2014-09-18
+156 	2014-09-13
 
 Counts of Process
-160645 	MANUAL
+31863 	MANUAL
 
 Counts of ADD/SUB
-95107 	ADD
-65538 	SUB
+25565 	ADD
+6298 	SUB
 
 Counts of User
-63579 	lozzaross@ufl.edu
-57498 	sanath@ufl.edu
-25194 	nortonh
-11854 	mconlon@ufl.edu
-1324 	haedenrbrsn@ufl.edu
-762 	moqri@ufl.edu
-294 	mawallet@pathology.ufl.edu
-140 	lsbhoren@ufl.edu
+27820 	nortonh
+2002 	haedenrbrsn@ufl.edu
+1016 	moqri@ufl.edu
+441 	mawallet@pathology.ufl.edu
+210 	lsbhoren@ufl.edu
+172 	melissa.cox@essie.ufl.edu
+168 	mconlon@ufl.edu
+34 	erinw@ufl.edu
 
 Counts of Subject (trimmed at 25)
-148 	<http://vivo.ufl.edu/individual/n89974>
-144 	<http://vivo.ufl.edu/individual/n765071>
-126 	<http://vivo.ufl.edu/individual/n147174>
-120 	<http://vivo.ufl.edu/individual/n140638>
-117 	<http://vivo.ufl.edu/individual/n207859>
-116 	<http://vivo.ufl.edu/individual/n121795>
-116 	<http://vivo.ufl.edu/individual/n100640>
-116 	<http://vivo.ufl.edu/individual/n901724>
-111 	<http://vivo.ufl.edu/individual/n105353>
-108 	<http://vivo.ufl.edu/individual/n1697824>
-108 	<http://vivo.ufl.edu/individual/n409890>
-106 	<http://vivo.ufl.edu/individual/n116441>
-106 	<http://vivo.ufl.edu/individual/n43612>
-106 	<http://vivo.ufl.edu/individual/n225078>
-104 	<http://vivo.ufl.edu/individual/n118456>
-102 	<http://vivo.ufl.edu/individual/n73363>
-102 	<http://vivo.ufl.edu/individual/n26656>
-100 	<http://vivo.ufl.edu/individual/n129152>
-98 	<http://vivo.ufl.edu/individual/n275182>
-98 	<http://vivo.ufl.edu/individual/n173652>
-98 	<http://vivo.ufl.edu/individual/n9025>
-98 	<http://vivo.ufl.edu/individual/n173957>
-96 	<http://vivo.ufl.edu/individual/n2108601574>
-96 	<http://vivo.ufl.edu/individual/n8497>
-96 	<http://vivo.ufl.edu/individual/n523984>
+189 	<http://vivo.ufl.edu/individual/n147174>
+174 	<http://vivo.ufl.edu/individual/n901724>
+160 	<http://vivo.ufl.edu/individual/n140638>
+159 	<http://vivo.ufl.edu/individual/n43612>
+159 	<http://vivo.ufl.edu/individual/n225078>
+159 	<http://vivo.ufl.edu/individual/n116441>
+156 	<http://vivo.ufl.edu/individual/n207859>
+153 	<http://vivo.ufl.edu/individual/n73363>
+148 	<http://vivo.ufl.edu/individual/n105353>
+147 	<http://vivo.ufl.edu/individual/n275182>
+147 	<http://vivo.ufl.edu/individual/n173652>
+147 	<http://vivo.ufl.edu/individual/n173957>
+147 	<http://vivo.ufl.edu/individual/n9025>
+141 	<http://vivo.ufl.edu/individual/n191111>
+141 	<http://vivo.ufl.edu/individual/n223529>
+135 	<http://vivo.ufl.edu/individual/n121671>
+135 	<http://vivo.ufl.edu/individual/n324348>
+129 	<http://vivo.ufl.edu/individual/n70682>
+129 	<http://vivo.ufl.edu/individual/n319672>
+129 	<http://vivo.ufl.edu/individual/n77515>
+129 	<http://vivo.ufl.edu/individual/n507674>
+126 	<http://vivo.ufl.edu/individual/n238685>
+124 	<http://vivo.ufl.edu/individual/n144466>
+124 	<http://vivo.ufl.edu/individual/n121010>
+123 	<http://vivo.ufl.edu/individual/n439180>
 
 Counts of Predicate (trimmed at 25)
-117869 	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>
-11487 	<http://purl.org/ontology/bibo/prefixName>
-10176 	<http://vivoweb.org/ontology/core#authorRank>
-3933 	<http://vitro.mannlib.cornell.edu/ns/vitro/0.7#mostSpecificType>
-1485 	<http://www.w3.org/2000/01/rdf-schema#label>
-972 	<http://purl.org/dc/terms/creator>
-925 	<http://vivoweb.org/ontology/core#primaryEmail>
-912 	<http://vivoweb.org/ontology/core#linkedAuthor>
-906 	<http://vivoweb.org/ontology/core#authorInAuthorship>
-904 	<http://vivoweb.org/ontology/core#informationResourceInAuthorship>
-898 	<http://vivoweb.org/ontology/core#linkedInformationResource>
-805 	<http://vivo.ufl.edu/ontology/vivo-ufl/homeDept>
-667 	<http://vivoweb.org/ontology/core#primaryPhoneNumber>
-626 	<http://purl.org/ontology/bibo/suffixName>
-576 	<http://vivoweb.org/ontology/core#dateTimePrecision>
-576 	<http://vivoweb.org/ontology/core#dateTime>
-569 	<http://xmlns.com/foaf/0.1/lastName>
-542 	<http://xmlns.com/foaf/0.1/firstName>
-425 	<http://vivoweb.org/ontology/core#preferredTitle>
-293 	<http://vivoweb.org/ontology/core#middleName>
-289 	<http://vivo.ufl.edu/ontology/vivo-ufl/dateTimeIntervalFor>
-289 	<http://vivoweb.org/ontology/core#dateTimeInterval>
-259 	<http://vivo.ufl.edu/ontology/vivo-ufl/dateHarvested>
-259 	<http://vivo.ufl.edu/ontology/vivo-ufl/harvestedBy>
-222 	<http://vivoweb.org/ontology/core#start>
+12584 	<http://vivoweb.org/ontology/core#authorRank>
+6640 	<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>
+2194 	<http://vitro.mannlib.cornell.edu/ns/vitro/0.7#mostSpecificType>
+1118 	<http://purl.org/dc/terms/creator>
+1038 	<http://vivoweb.org/ontology/core#linkedAuthor>
+1030 	<http://vivoweb.org/ontology/core#authorInAuthorship>
+1026 	<http://vivoweb.org/ontology/core#informationResourceInAuthorship>
+1018 	<http://vivoweb.org/ontology/core#linkedInformationResource>
+823 	<http://www.w3.org/2000/01/rdf-schema#label>
+481 	<http://xmlns.com/foaf/0.1/lastName>
+473 	<http://xmlns.com/foaf/0.1/firstName>
+274 	<http://vivoweb.org/ontology/core#dateTimePrecision>
+274 	<http://vivoweb.org/ontology/core#dateTime>
+236 	<http://vivoweb.org/ontology/core#middleName>
+192 	<http://purl.org/dc/terms/title>
+190 	<http://vivoweb.org/ontology/core#hasPublicationVenue>
+186 	<http://vivoweb.org/ontology/core#dateTimeValue>
+182 	<http://vivoweb.org/ontology/core#publicationVenueFor>
+180 	<http://purl.org/ontology/bibo/pageStart>
+180 	<http://purl.org/ontology/bibo/pageEnd>
+170 	<http://purl.org/ontology/bibo/volume>
+121 	<http://purl.org/ontology/bibo/issue>
+96 	<http://vitro.mannlib.cornell.edu/ns/vitro/0.7#modTime>
+88 	<http://vivoweb.org/ontology/core#researchAreaOf>
+88 	<http://vivoweb.org/ontology/core#hasResearchArea>
 
 Counts of Object (trimmed at 25)
-84115 	<http://vivo.ufl.edu/ontology/vivo-ufl/UFCurrentEntity>
-26301 	<http://vivo.ufl.edu/ontology/vivo-ufl/UFEntity>
-5139 	"Dr"
-2789 	<http://www.w3.org/2002/07/owl#Thing>
-2763 	"Ms"
-2602 	"Mr"
-1788 	<http://vivoweb.org/ontology/core#Authorship>
-1596 	"1^^http://www.w3.org/2001/XMLSchema#int"
-1596 	"2^^http://www.w3.org/2001/XMLSchema#int"
-1341 	"3^^http://www.w3.org/2001/XMLSchema#int"
-1136 	<http://vivoweb.org/ontology/core#DateTimeValue>
-1078 	"4^^http://www.w3.org/2001/XMLSchema#int"
-1000 	<http://xmlns.com/foaf/0.1/Person>
-894 	<http://vivoweb.org/ontology/core#Relationship>
-884 	"Mrs"
-880 	"5^^http://www.w3.org/2001/XMLSchema#int"
-680 	"6^^http://www.w3.org/2001/XMLSchema#int"
-581 	<http://xmlns.com/foaf/0.1/Agent>
-578 	<http://vivoweb.org/ontology/core#DateTimeInterval>
-551 	"7^^http://www.w3.org/2001/XMLSchema#int"
-449 	"8^^http://www.w3.org/2001/XMLSchema#int"
-375 	"9^^http://www.w3.org/2001/XMLSchema#int"
-373 	<http://vivoweb.org/ontology/core#yearPrecision>
-325 	"10^^http://www.w3.org/2001/XMLSchema#int"
-310 	<http://purl.org/ontology/bibo/AcademicArticle>
-2014-09-19 16:17:18.620128 Finish
+2203 	<http://www.w3.org/2002/07/owl#Thing>
+2026 	<http://vivoweb.org/ontology/core#Authorship>
+1812 	"1^^http://www.w3.org/2001/XMLSchema#int"
+1812 	"2^^http://www.w3.org/2001/XMLSchema#int"
+1560 	"3^^http://www.w3.org/2001/XMLSchema#int"
+1291 	"4^^http://www.w3.org/2001/XMLSchema#int"
+1090 	"5^^http://www.w3.org/2001/XMLSchema#int"
+1013 	<http://vivoweb.org/ontology/core#Relationship>
+938 	<http://xmlns.com/foaf/0.1/Person>
+860 	"6^^http://www.w3.org/2001/XMLSchema#int"
+715 	"7^^http://www.w3.org/2001/XMLSchema#int"
+598 	"8^^http://www.w3.org/2001/XMLSchema#int"
+548 	<http://vivoweb.org/ontology/core#DateTimeValue>
+503 	"9^^http://www.w3.org/2001/XMLSchema#int"
+500 	<http://xmlns.com/foaf/0.1/Agent>
+441 	"10^^http://www.w3.org/2001/XMLSchema#int"
+379 	"11^^http://www.w3.org/2001/XMLSchema#int"
+340 	<http://purl.org/ontology/bibo/AcademicArticle>
+311 	"12^^http://www.w3.org/2001/XMLSchema#int"
+274 	<http://vivoweb.org/ontology/core#yearPrecision>
+261 	"13^^http://www.w3.org/2001/XMLSchema#int"
+209 	<http://vivoweb.org/ontology/core#InformationResource>
+201 	"14^^http://www.w3.org/2001/XMLSchema#int"
+184 	<http://vivo.ufl.edu/individual/n56311>
+178 	<http://purl.org/ontology/bibo/Document>
+2014-09-20 10:05:42.879833 Finish
